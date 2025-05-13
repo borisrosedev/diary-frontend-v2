@@ -57,8 +57,10 @@ async function submitHandler () {
   }
 
   try {
-    const token = await (await fetch(url,req)).json()
-    console.log(token)
+    const { token } = await (await fetch(url,req)).json()
+
+    localstorage.setItem('token', token)
+    
   } catch(err) {
     console.log(err)
   }
